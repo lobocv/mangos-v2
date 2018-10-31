@@ -151,9 +151,6 @@ func TestStar(t *testing.T) {
 		}
 	}
 
-	// wait a little bit for connections to establish
-	time.Sleep(time.Microsecond * 500)
-
 	// start receivers first... avoids first missed dropped packet
 	t.Logf("Starting recv")
 	for id := 0; id < num; id++ {
@@ -161,7 +158,7 @@ func TestStar(t *testing.T) {
 	}
 
 	// wait a little just to be sure go routines are all running
-	time.Sleep(time.Millisecond * 10)
+	time.Sleep(time.Second / 7)
 
 	// then start senders
 	t.Logf("Starting send")
